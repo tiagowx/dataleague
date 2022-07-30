@@ -1,7 +1,11 @@
 import { app } from "../configs/app";
+import { ISummoner } from "../interfaces/ISummoner";
 import apiContext from "./apiContext"
 
 export class SummonerServices {
+  summoner?: ISummoner;
+  masteryScore?: number;
+
 
   getData = async (name: string) => {
 
@@ -9,15 +13,24 @@ export class SummonerServices {
 
     const { data } = await apiContext.get(url);
 
-    console.log(data);
+    this.summoner = data;
+    console.log(this.summoner);
     return data;
   }
   getMasteryScore = async (id: string) => {
     const url = `/lol/champion-mastery/v4/scores/by-summoner/${id}?api_key=${app.apiToken}`;
-    const {data} = await apiContext.get(url);
+    const { data } = await apiContext.get(url);
 
-    console.log(data);
+    this.masteryScore = data;
     return data;
   }
 
+  constructor(name?: string) {
+    if (name)
+      this.getData(name);
+
+    if (this.summoner)
+      this.getMasteryScore(this.summoner?.id);
+
+  }
 }

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ISummoner } from "../../interfaces/ISummoner";
 import { SummonerServices } from "../../services/summonerServices";
 import SearchIcon from '@mui/icons-material/Search';
-import SummonerCard from "../../pages/Summoner";
+import SummonerCard from "../SummonerCard";
 
 const SearchSummoner = () => {
   const [search, setSearch] = useState("morteim");

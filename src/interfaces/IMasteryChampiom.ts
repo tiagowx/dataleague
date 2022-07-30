@@ -1,4 +1,4 @@
- interface IMasteryChampion{
+export interface IMasteryChampiom {
   championId: number;
   championLevel: number;
   championPoints: number;
@@ -8,5 +8,3 @@
   chestGranted: boolean;
   tokensEarned: number;
 }
-
-export default IMasteryChampion;

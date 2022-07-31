@@ -1,4 +1,4 @@
-export interface IMasteryChampiom {
+export interface IMasteryChampion {
   championId: number;
   championLevel: number;
   championPoints: number;

@@ -1,4 +1,4 @@
-import { IMasteryChampiom } from "./IMasteryChampiom";
+import { IMasteryChampion } from "./IMasteryChampiom";
 
 export interface ISummoner {
   id: string;
@@ -6,5 +6,5 @@ export interface ISummoner {
   profileIconId: number;
   summonerLevel: number;
   masteryScore?: number;
-  masteryChampions?: IMasteryChampiom[];
+  masteryChampions?: IMasteryChampion[];
 }

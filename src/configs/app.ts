@@ -1,5 +1,6 @@
 export const app = {
   apiToken: process.env.REACT_APP_LOL_API_KEY,
+  languagem: process.env.REACT_API_LANGAGE,
   urlRoutings: {
     'BR1': 'br1.api.riotgames.com',
     'EUN1': 'eun1.api.riotgames.com',
@@ -13,6 +14,9 @@ export const app = {
     'TR1': 'tr1.api.riotgames.com',
     'RU': 'ru.api.riotgames.com',
   },
-  profileIconsUrl:'http://ddragon.leagueoflegends.com/cdn/12.14.1/img/profileicon/'
+  profileIconsUrl: 'http://ddragon.leagueoflegends.com/cdn/12.14.1/img/profileicon/',
+  championsData: `http://ddragon.leagueoflegends.com/cdn/12.14.1/data/${process.env.REACT_API_LANGAGE}/champion.json`,
+  champiomIconsUrl: 'http://ddragon.leagueoflegends.com/cdn/12.14.1/img/champion/',
+  champiomLoadingsUrl: 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/'
 
 }

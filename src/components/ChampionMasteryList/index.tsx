@@ -1,5 +1,4 @@
 import { Icon, List, ListItem, Typography } from "@mui/material";
-import { useState } from "react";
 import { app } from "../../configs/app";
 
 import { IChampion } from "../../interfaces/IChampion"
@@ -13,12 +12,9 @@ interface Props {
 const ChampiomMasteryList: React.FC<Props> = (props: Props) => {
 
   const championService = new ChampionService();
-  const [champions] = useState<IChampion[]>(() => {
-    const mapped = props.champions.map(c =>
-      championService.getChampionByKey(c.championId)
-    );
-    return mapped;
-  });
+  const champions: IChampion[] = props.champions.map(c =>
+    championService.getChampionByKey(c.championId)
+  );
 
   return (
     <List sx={{
@@ -30,7 +26,7 @@ const ChampiomMasteryList: React.FC<Props> = (props: Props) => {
       border: 1
 
     }}>
-      { champions?.map((champion, index) =>
+      {champions.map((champion, index) =>
         <ListItem key={champion.id}>
           <Icon
             component="img"

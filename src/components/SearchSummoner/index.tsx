@@ -5,18 +5,32 @@ import { SummonerServices } from "../../services/summonerServices";
 import SearchIcon from '@mui/icons-material/Search';
 import SummonerCard from "../SummonerCard";
 
-const SearchSummoner = () => {
+// import { Lol } from "../../services/lolService";
+// import { ChampionService } from "../../services/championService";
+import { IMasteryChampion } from "../../interfaces/IMasteryChampiom";
+
+const SearchSummoner: React.FC = () => {
   const [search, setSearch] = useState("morteim");
   const [summoner, setSummoner] = useState<ISummoner | undefined>(undefined);
 
-  async function handlerSearch() {
-    if (search.length <= 3) {
-      return;
-    }
-    const summonerService = new SummonerServices();
-    const data = await summonerService.getData(search);
+  //  const lolService = new Lol();
 
-    setSummoner(data);
+
+
+  async function handlerSearch() {
+    const summonerService = new SummonerServices();
+
+    const data: ISummoner = await summonerService.getData(search);
+
+    const champions: IMasteryChampion[] = await summonerService.getMasteryChampions(data.id);
+
+
+    setSummoner({
+      ...data,
+      masteryChampions: champions
+    });
+
+    console.log(summoner)
   }
 
 
@@ -44,6 +58,7 @@ const SearchSummoner = () => {
       </Box>
       {summoner &&
         <Box>
+
           <SummonerCard summoner={summoner} />
         </Box>
       }

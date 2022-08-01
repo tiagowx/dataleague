@@ -8,21 +8,18 @@ export class SummonerServices {
 
     const { data } = await apiContext.get(url);
 
-    console.log(data);
     return data;
   }
   getMasteryScore = async (id: string) => {
     const url = `/lol/champion-mastery/v4/scores/by-summoner/${id}?api_key=${app.apiToken}`;
     const { data } = await apiContext.get(url);
 
-    console.log(data);
     return data;
   }
   getMasteryChampions = async (id: string) => {
     const url = `/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${app.apiToken}`
     const { data } = await apiContext.get(url);
-
-    console.log(data);
+    
     return data;
   }
 

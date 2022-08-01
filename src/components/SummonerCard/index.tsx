@@ -1,51 +1,34 @@
 import { Card, CardContent, CardHeader, Icon, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { app } from "../../configs/app";
-import { IMasteryChampion } from "../../interfaces/IMasteryChampiom";
 import { ISummoner } from "../../interfaces/ISummoner";
 import { ChampionService } from "../../services/championService";
-import { SummonerServices } from "../../services/summonerServices";
 import ChampiomMasteryList from "../ChampionMasteryList";
 
 interface Props {
   summoner: ISummoner;
 }
 
-const SummonerCard: React.FC<Props> = (summoner: Props) => {
+const SummonerCard: React.FC<Props> = (props: Props) => {
   const championService = new ChampionService();
-  const summonerService = new SummonerServices();
-
-  const [masteryScore, setMasteryScore] = useState(0);
-  const [masteryChampions, setMasteryChampions] = useState<IMasteryChampion[]>([]);
-  const [bg, setBg] = useState("");
 
 
-  useEffect(() => {
-    const updateChapiomMastery = async () => {
-      function handlerSetBG() {
-        const image = championService.getChampionByKey(masteryChampions[0].championId);
-        const url = `${app.champiomLoadingsUrl + image.id}_0.jpg`
-        return url;
-      }
-      if (!summoner) return;
+  const [masteryScore] = useState(0);
 
 
-      const score = await summonerService.getMasteryScore(summoner.summoner.id);
-      const champions = await summonerService.getMasteryChampions(summoner.summoner.id);
-      setMasteryScore(score);
-      setMasteryChampions(champions);
-      championService.getChampionByKey(3);
-      setBg(handlerSetBG());
-    }
-    setTimeout(() => updateChapiomMastery(), 1000);
+  function handlerSetBG() {
+    if (!props.summoner.masteryChampions)
+      return;
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const image = championService.getChampionByKey(props.summoner.masteryChampions[0].championId);
+    const url = `${app.champiomLoadingsUrl}${image.id}_0.jpg`
+    return url;
+  }
 
   const SummonerIcon = () => (
     <Icon
       component='img'
-      src={`${app.profileIconsUrl}${summoner.summoner?.profileIconId}.png`}
+      src={`${app.profileIconsUrl}${props.summoner?.profileIconId}.png`}
       sx={{
         width: '64px',
         height: 'auto',
@@ -59,13 +42,13 @@ const SummonerCard: React.FC<Props> = (summoner: Props) => {
       display: 'flex',
       flexDirection: 'column',
       width: '308px',
-      backgroundImage: `url(${bg})`,
-
+      backgroundImage: `url(${handlerSetBG()})`,
+      
     }}>
       <CardHeader
         avatar={<SummonerIcon />}
-        title={summoner.summoner.name}
-        subheader={`Lvl.:${summoner.summoner.summonerLevel} | Maestria: ${masteryScore}`}
+        title={props.summoner.name}
+        subheader={`Lvl.:${props.summoner.summonerLevel} | Maestria: ${masteryScore}`}
         sx={{
           display: 'flex',
           width: '100%',
@@ -77,12 +60,14 @@ const SummonerCard: React.FC<Props> = (summoner: Props) => {
       <CardContent sx={{
         p: 0,
         m: 0,
-        bgcolor: 'rgba(255,255,255,0.75)'
+        bgcolor: 'rgba(255,255,255,0.80)'
       }}>
         <Typography component='h3' variant='h6' p={1}>
           Maestria por Campeão
         </Typography>
-        <ChampiomMasteryList champions={masteryChampions || []} />
+        {props.summoner?.masteryChampions &&
+          <ChampiomMasteryList champions={props.summoner?.masteryChampions} />
+        }
       </CardContent>
 
 

@@ -1,6 +1,8 @@
 # Data League
 Projeto de exemplo de consumo de dados da API pública da Riot Games e seus jogos: League of Legends, Team Fight Tatics, League of Runeterra e Valorant.
 
+![plot](./screenshots/logo.png)
+
 ## Objetivos
 - Buscar invocador(jogador) pelo nome;
 - Retornar informações públicas básicas (nível de conta e icone de perfil);

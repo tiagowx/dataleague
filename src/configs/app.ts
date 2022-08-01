@@ -1,4 +1,5 @@
 export const app = {
+  patchVersionsLol: 'https://ddragon.leagueoflegends.com/api/versions.json',
   apiToken: process.env.REACT_APP_LOL_API_KEY,
   languagem: process.env.REACT_API_LANGAGE,
   urlRoutings: {

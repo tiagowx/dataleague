@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/dataleague/static/css/main.073c9b0a.css",
-    "main.js": "/dataleague/static/js/main.1202c7ee.js",
+    "main.js": "/dataleague/static/js/main.c3c81bb1.js",
     "static/js/787.66a2cf7f.chunk.js": "/dataleague/static/js/787.66a2cf7f.chunk.js",
     "index.html": "/dataleague/index.html",
     "main.073c9b0a.css.map": "/dataleague/static/css/main.073c9b0a.css.map",
-    "main.1202c7ee.js.map": "/dataleague/static/js/main.1202c7ee.js.map",
+    "main.c3c81bb1.js.map": "/dataleague/static/js/main.c3c81bb1.js.map",
     "787.66a2cf7f.chunk.js.map": "/dataleague/static/js/787.66a2cf7f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.1202c7ee.js"
+    "static/js/main.c3c81bb1.js"
   ]
 }

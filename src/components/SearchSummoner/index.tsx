@@ -23,10 +23,12 @@ const SearchSummoner: React.FC = () => {
     const data: ISummoner = await summonerService.getData(search);
 
     const champions: IMasteryChampion[] = await summonerService.getMasteryChampions(data.id);
+    const score = await summonerService.getMasteryScore(data.id);
 
 
     setSummoner({
       ...data,
+      masteryScore: score,
       masteryChampions: champions
     });
 

@@ -1,5 +1,5 @@
 export interface IChampion {
-  id: string;
-  name: string;
-  key: number;
+  id?: string;
+  name?: string;
+  key?: number;
 };

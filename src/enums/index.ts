@@ -1,13 +1,13 @@
 export enum tagLines {
-  BR1,
-  EUN1,
-  EUW1,
-  JP1,
-  KR,
-  LA1,
-  LA2,
-  NA1,
-  OC1,
-  TR1,
-  RU
+  BR1 = 0,
+  EUN1 = 1,
+  EUW1 = 2,
+  JP1 = 3,
+  KR = 4,
+  LA1 = 5,
+  LA2 = 6,
+  NA1 = 7,
+  OC1 = 8,
+  TR1 = 9,
+  RU = 10
 }

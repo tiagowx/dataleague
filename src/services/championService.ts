@@ -1,9 +1,11 @@
 import champions from '../repo/champion.json';
+import { IChampion } from '../interfaces/IChampion';
 
 export class ChampionService {
 
-  getChampionByKey = (key: number) => {
+  values: IChampion;
 
+  getChampionByKey = (key: number) => {
 
     const result = Object.values(champions.data);
 
@@ -14,4 +16,19 @@ export class ChampionService {
     return { name, key, id };
   }
 
+  constructor(key?: number) {
+    if (!key)
+      this.values = {
+        id: "",
+        key: 0,
+        name: ""
+      };
+    else
+      this.values = {
+        id: this.getChampionByKey(key).id || "",
+        key: key,
+        name: this.getChampionByKey(key).name || ""
+      };
+
+  }
 }

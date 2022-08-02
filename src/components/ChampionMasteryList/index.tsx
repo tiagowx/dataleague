@@ -23,7 +23,6 @@ const ChampiomMasteryList: React.FC<Props> = (props: Props) => {
       maxHeight: '240px',
       overflowY: 'auto',
       m: 1,
-      border: 1
 
     }}>
       {champions.map((champion, index) =>

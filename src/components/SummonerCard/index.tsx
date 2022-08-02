@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, Icon, Typography } from "@mui/material";
-import {  useState } from "react";
 import { app } from "../../configs/app";
 import { ISummoner } from "../../interfaces/ISummoner";
 import { ChampionService } from "../../services/championService";
@@ -11,9 +10,7 @@ interface Props {
 
 const SummonerCard: React.FC<Props> = (props: Props) => {
   const championService = new ChampionService();
-
-
-  const [masteryScore] = useState(0);
+  
 
 
   function handlerSetBG() {
@@ -48,13 +45,11 @@ const SummonerCard: React.FC<Props> = (props: Props) => {
       <CardHeader
         avatar={<SummonerIcon />}
         title={props.summoner.name}
-        subheader={`Lvl.:${props.summoner.summonerLevel} | Maestria: ${masteryScore}`}
+        subheader={`Lvl.:${props.summoner.summonerLevel} | Maestria: ${props.summoner.masteryScore}`}
         sx={{
           display: 'flex',
           width: '100%',
           bgcolor: 'rgba(255,255,255,0.8)',
-          borderBottom: 1
-
         }}
       />
       <CardContent sx={{

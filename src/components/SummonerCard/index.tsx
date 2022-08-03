@@ -10,16 +10,16 @@ interface Props {
 
 const SummonerCard: React.FC<Props> = (props: Props) => {
   const championService = new ChampionService();
-  
 
 
   function handlerSetBG() {
-    if (!props.summoner.masteryChampions)
-      return;
+    if (!props.summoner || props.summoner.masteryChampions.length <= 0) 
+    return;
 
     const image = championService.getChampionByKey(props.summoner.masteryChampions[0].championId);
-    const url = `${app.champiomLoadingsUrl}${image.id}_0.jpg`
-    return url;
+      const url = `${app.champiomLoadingsUrl}${image.id}_0.jpg`
+      return url;
+    
   }
 
   const SummonerIcon = () => (
@@ -40,7 +40,7 @@ const SummonerCard: React.FC<Props> = (props: Props) => {
       flexDirection: 'column',
       width: '308px',
       backgroundImage: `url(${handlerSetBG()})`,
-      
+
     }}>
       <CardHeader
         avatar={<SummonerIcon />}

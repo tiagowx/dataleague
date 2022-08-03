@@ -1,25 +1,45 @@
+import axios from "axios";
 import { app } from "../configs/app";
-import apiContext from "./apiContext"
+import { ISummoner } from "../interfaces/ISummoner";
 
 export class SummonerServices {
-  getData = async (name: string) => {
 
-    const url = `/lol/summoner/v4/summoners/by-name/${name}?api_key=${app.apiToken}`;
+  getSummoner = async (tagLine: string, gameName: string) => {
+    const baseUrl = `https://${tagLine}.api.riotgames.com`;
+    const token = `?api_key=${app.apiToken}`;
+    const url = '/lol/summoner/v4/summoners/by-name/';
 
-    const { data } = await apiContext.get(url);
+    const { data } = await axios.get(baseUrl + url + gameName + token);
 
-    return data;
+    return data as ISummoner;
   }
-  getMasteryScore = async (id: string) => {
-    const url = `/lol/champion-mastery/v4/scores/by-summoner/${id}?api_key=${app.apiToken}`;
-    const { data } = await apiContext.get(url);
 
-    return data;
+  getMasteryScore = async (id: string, tagline: string) => {
+    const baseUrl = `https://${tagline}.api.riotgames.com`;
+    const token = `?api_key=${app.apiToken}`;
+    const url = '/lol/champion-mastery/v4/scores/by-summoner/';
+
+
+    // const { data, status } = 
+    return await axios.get(baseUrl + url + id + token)
+      .then((res) => {
+        if (res.status === 404) {
+          console.log('erro');
+        }
+        return res.data
+      })
+      .catch((err) => {
+        console.log(err)
+      });
   }
-  getMasteryChampions = async (id: string) => {
-    const url = `/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${app.apiToken}`
-    const { data } = await apiContext.get(url);
-    
+
+  getMasteryChampions = async (id: string, tagline: string) => {
+    const baseUrl = `https://${tagline}.api.riotgames.com`;
+    const token = `?api_key=${app.apiToken}`;
+    const url =`/lol/champion-mastery/v4/champion-masteries/by-summoner/`;
+
+    const { data } = await axios.get(baseUrl + url + id + token);
+
     return data;
   }
 

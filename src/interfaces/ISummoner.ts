@@ -5,6 +5,7 @@ export interface ISummoner {
   name: string;
   profileIconId: number;
   summonerLevel: number;
-  masteryScore?: number;
-  masteryChampions?: IMasteryChampion[];
+  masteryScore: number;
+  tagLine: string;
+  masteryChampions: IMasteryChampion[];
 }

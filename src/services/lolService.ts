@@ -1,12 +1,12 @@
 import { app } from "../configs/app"
-import apiContext from "./apiContext"
+import { apiLocal } from "./apiContext"
 
 export class Lol {
   version: string;
 
   constructor() {
     const response = async () => {
-      const result = await apiContext.get('');
+      const result = await apiLocal.get('');
 
       return result;
     }

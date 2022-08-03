@@ -4,10 +4,10 @@ import Home from "./Home";
 
 const Pages = () =>{
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter >
     <Routes>
-      <Route path="/Home" element={<Home/>} />
-      <Route path="/" element={<Building/>} />
+      <Route path="/" element={<Home/>} />
+      <Route path="/buiding" element={<Building/>} />
     </Routes>
     </BrowserRouter>
   );

@@ -1,24 +1,22 @@
-import { IAccount } from "../interfaces/IAccount";
-import apiContext from "./apiContext";
+import axios from "axios";
+import { app } from "../configs/app";
+import { ISummoner } from "../interfaces/ISummoner";
 
 
-export class accountService {
-  value?: IAccount;
+export class AccountService {
 
-  constructor(tagLine: string, gameName: string) {
-    if (!gameName)
-      return;
+  async getAccountData(tagLine: string, gameName: string) {
 
-    const data = async () => {
-      const url = `/riot/account/v1/accounts/by-riot-id/${gameName}/${tagLine}`;
-      const { data } = await apiContext.get(url);
+    const baseUrl = `https://${tagLine}.api.riotgames.com`
+    const token = `?api_key=${app.apiToken}`
+    const url = '/lol/summoner/v4/summoners/by-name/'
 
-      this.value = data;
+    const { data } = await axios.get(baseUrl + url + gameName + token);
 
-      console.log(this.value);
-      return;
-    }
+    console.log(data);
 
-    data();
+    return data as ISummoner;
   }
+
+
 }

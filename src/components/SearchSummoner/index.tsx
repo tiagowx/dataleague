@@ -20,11 +20,10 @@ const SearchSummoner: React.FC = () => {
   async function handlerSearch() {
     const summonerService = new SummonerServices();
 
-    const data: ISummoner = await summonerService.getData(search);
+    const data: ISummoner = await summonerService.getSummoner('br1',search);
 
-    const champions: IMasteryChampion[] = await summonerService.getMasteryChampions(data.id);
-    const score = await summonerService.getMasteryScore(data.id);
-
+    const champions: IMasteryChampion[] = await summonerService.getMasteryChampions(data.id , 'br1');
+    const score = await summonerService.getMasteryScore(data.id, 'br1');
 
     setSummoner({
       ...data,
@@ -34,7 +33,6 @@ const SearchSummoner: React.FC = () => {
 
     console.log(summoner)
   }
-
 
   return (
     <Box>
@@ -60,7 +58,6 @@ const SearchSummoner: React.FC = () => {
       </Box>
       {summoner &&
         <Box>
-
           <SummonerCard summoner={summoner} />
         </Box>
       }

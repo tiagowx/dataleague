@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, Icon, Typography } from "@mui/material";
 import { app } from "../../configs/app";
 import { ISummoner } from "../../interfaces/ISummoner";
-import { ChampionService } from "../../services/championService";
+import darkTheme from "../../themes";
 import ChampiomMasteryList from "../ChampionMasteryList";
 
 interface Props {
@@ -9,19 +9,7 @@ interface Props {
 }
 
 const SummonerCard: React.FC<Props> = (props: Props) => {
-  const championService = new ChampionService();
-
-
-  function handlerSetBG() {
-    if (!props.summoner || props.summoner.masteryChampions.length <= 0) 
-    return;
-
-    const image = championService.getChampionByKey(props.summoner.masteryChampions[0].championId);
-      const url = `${app.champiomLoadingsUrl}${image.id}_0.jpg`
-      return url;
-    
-  }
-
+  
   const SummonerIcon = () => (
     <Icon
       component='img'
@@ -34,13 +22,13 @@ const SummonerCard: React.FC<Props> = (props: Props) => {
   );
 
   return (
-    <Card sx={{
+    <Card variant="elevation" sx={{
       m: 1,
       display: 'flex',
       flexDirection: 'column',
-      width: '308px',
-      backgroundImage: `url(${handlerSetBG()})`,
-
+      width: '309px',
+      backgroundColor: darkTheme.palette.background.default,
+      
     }}>
       <CardHeader
         avatar={<SummonerIcon />}
@@ -49,22 +37,19 @@ const SummonerCard: React.FC<Props> = (props: Props) => {
         sx={{
           display: 'flex',
           width: '100%',
-          bgcolor: 'rgba(255,255,255,0.8)',
         }}
       />
       <CardContent sx={{
         p: 0,
         m: 0,
-        bgcolor: 'rgba(255,255,255,0.80)'
       }}>
-        <Typography component='h3' variant='h6' p={1}>
+        <Typography component='h3' variant='h6' px={2}>
           Maestria por Campeão
         </Typography>
         {props.summoner?.masteryChampions &&
           <ChampiomMasteryList champions={props.summoner?.masteryChampions} />
         }
       </CardContent>
-
 
     </Card>
   );

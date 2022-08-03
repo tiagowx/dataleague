@@ -33,6 +33,7 @@ export const app = {
   profileIconsUrl: 'http://ddragon.leagueoflegends.com/cdn/12.14.1/img/profileicon/',
   championsData: `http://ddragon.leagueoflegends.com/cdn/12.14.1/data/${process.env.REACT_API_LANGAGE}/champion.json`,
   champiomIconsUrl: 'http://ddragon.leagueoflegends.com/cdn/12.14.1/img/champion/',
-  champiomLoadingsUrl: 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/'
+  champiomLoadingsUrl: 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/',
+  champiomSplashUrl: 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/',
 
 }

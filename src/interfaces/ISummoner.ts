@@ -8,4 +8,5 @@ export interface ISummoner {
   masteryScore: number;
   tagLine: string;
   masteryChampions: IMasteryChampion[];
+  matches: string[];
 }

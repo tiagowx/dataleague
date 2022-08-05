@@ -3,7 +3,6 @@ export const app = {
   apiToken: process.env.REACT_APP_LOL_API_KEY,
   languagem: process.env.REACT_API_LANGAGE,
   tagLine: [
-    '',
     'BR1',
     'EUN1',
     'EUW1',
@@ -16,7 +15,7 @@ export const app = {
     'TR1',
     'RU',
   ],
-  urlRegionalServer: 'americas.api.riotgames.com',
+  urlRegionalServer: 'https://americas.api.riotgames.com',
   urlLocalRoutings: {
     'BR1': 'br1.api.riotgames.com',
     'EUN1': 'eun1.api.riotgames.com',

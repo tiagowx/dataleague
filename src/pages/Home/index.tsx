@@ -7,7 +7,6 @@ import { ISummoner } from "../../interfaces/ISummoner";
 import { ChampionService } from "../../services/championService";
 import { SummonerServices } from "../../services/summonerServices";
 import SearchIcon from "@mui/icons-material/Search";
-import { TheaterComedySharp } from "@mui/icons-material";
 import darkTheme from "../../themes";
 
 const Home: React.FC = () => {

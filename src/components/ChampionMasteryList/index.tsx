@@ -32,7 +32,7 @@ const ChampiomMasteryList: React.FC<Props> = (props: Props) => {
         webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
       },
       '&::-webkit-scrollbar-thumb': {
-        backgroundColor: 'rgba(0,0,0,.5)',
+        backgroundColor: darkTheme.palette.background.default,
         outline: '1px solid rgba(255,255,255, .5)',
         borderRadius: '50%'
       }

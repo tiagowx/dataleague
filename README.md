@@ -24,6 +24,7 @@ Projeto de estudo de dados da API pública da Riot Games e seus jogos: League of
  - Configurações sensíveis precisam ser alteradas no arquivo '.env-example', qual deve ser renomeado para apenas '.env'.
 
 ## O que aprendi
+ - Filtrar melhor dados vindos do backend;
  - Identificar melhor variáveis de ambiente;
  - Manter o padrão de projeto escolhido durante o desenvolvimento;
  - Me adaptar a estrutura de dados criadas por terceiros;
